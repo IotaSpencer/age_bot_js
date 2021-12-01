@@ -1,0 +1,54 @@
+{
+  "name": "age_bot",
+  "description": "Discord Bot for verifying ages",
+  "version": "0.0.1",
+  "author": "Ken Spencer @IotaSpencer",
+  "bin": {
+    "age_bot": "./bin/run"
+  },
+  "bugs": "https://github.com/IotaSpencer/age_bot_js/issues",
+  "dependencies": {
+    "@oclif/command": "^1.8.6",
+    "@oclif/config": "^1.18.1",
+    "@oclif/plugin-help": "^3.2.9",
+    "discord.js": "^13.3.1"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.26.5",
+    "eslint": "^5.16.0",
+    "eslint-config-oclif": "^3.1.0",
+    "globby": "^10.0.2",
+    "rimraf": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src"
+  ],
+  "homepage": "https://github.com/IotaSpencer/age_bot_js",
+  "keywords": [
+    "oclif",
+    "discord.js"
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "oclif": {
+    "commands": "./src/commands",
+    "bin": "age_bot",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "IotaSpencer/age_bot_js",
+  "scripts": {
+    "postpack": "rimraf oclif.manifest.json",
+    "posttest": "eslint .",
+    "prepack": "oclif-dev manifest && oclif-dev readme",
+    "test": "echo NO TESTS",
+    "version": "oclif-dev readme && git add README.md"
+  }
+}
