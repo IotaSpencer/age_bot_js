@@ -11,4 +11,7 @@ client.once('ready', () => {
 });
 
 // Login to discord
-client.login(token);
+//client.login(token);
+
+// Do a dry(non-working) connect
+console.log('Logging in! (not really)')
