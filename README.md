@@ -4,9 +4,7 @@ age_bot
 CLI for age_bot
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/age_bot.svg)](https://npmjs.org/package/age_bot)
-[![Downloads/week](https://img.shields.io/npm/dw/age_bot.svg)](https://npmjs.org/package/age_bot)
-[![License](https://img.shields.io/npm/l/age_bot.svg)](https://github.com/IotaSpencer/age_bot/blob/master/package.json)
+[![License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://mit-license.org)
 
 <!-- toc -->
 * [Usage](#usage)
