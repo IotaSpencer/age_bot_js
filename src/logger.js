@@ -1,16 +1,13 @@
-const fs = require('fs')
 const pino = require('pino');
-const pretty = require('pino-pretty')
-
-var streams = [
-  {stream: pretty()},
-  {level: 'debug', stream: process.stdout},
-  {level: 'error', stream: process.stderr},
+const pretty = require('pino-pretty');
+import fs from 'fs'
+import os from 'os'
+import path from 'path'
+const streams = [
+  {stream: pretty(undefined)},
+  {stream: fs.createWriteStream(`${path.join(os.homedir(),'.age_bot','logs','production.log')}`)},
+  {level: 'debug', stream: fs.createWriteStream(`${path.join(os.homedir(),'.age_bot','logs','debug.log')}`)},
   {level: 'fatal', stream: process.stderr}
-]
-
-const logger = pino({
-  name: 'my-app',
-  level: 'debug', // must be the lowest level of all streams
-}, pino.multistream(streams))
+];
+const logger = pino();
 module.exports = logger;

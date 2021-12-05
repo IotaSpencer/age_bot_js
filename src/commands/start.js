@@ -1,14 +1,13 @@
 const {Command, flags} = require('@oclif/command')
-
+const os = require('os')
+const pro = require(`/home/${os.userInfo().username}/age_bot_js/src/bot`)
 class StartCommand extends Command {
   async run() {
-    const {flags} = this.parse(StartCommand)
-    const name = flags.name || 'world'
-    this.log(`hello ${name} from .\\src\\commands\\hello.js`)
+    pro()
   }
 }
 
-StartCommand.description = `Describe the command here
+StartCommand.description = `Start the bot
 ...
 Extra documentation goes here
 `
