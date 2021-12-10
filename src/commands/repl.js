@@ -2,12 +2,11 @@ const {Command, flags} = require('@oclif/command')
 class ReplCommand extends Command {
   async run() {
     const repl = require('repl');
-    const msg = 'message';
-    repl.start('> ').context.m = msg;
+    repl.start({"prompt": '> ', "useColors": true, "ignoreUndefined": true}).context.m = 'message';
   }
 }
 
-ReplCommand.description = `Deploy Slash(/) commands
+ReplCommand.description = `Open Repl for bot
 ...
 Only needs to be used when commands are updated/added/removed from the bot.
 `

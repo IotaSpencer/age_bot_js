@@ -3,7 +3,7 @@ const os = require('os')
 const pro = require(`/home/${os.userInfo().username}/age_bot_js/src/bot`)
 class StartCommand extends Command {
   async run() {
-    pro()
+    pro
   }
 }
 
