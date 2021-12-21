@@ -20,6 +20,9 @@ for (const file of eventFiles) {
     client.on(event.name, (...args) => event.execute(...args));
   }
 }
+
+/* old stuff --
+
 const commandFiles = fs.readdirSync('src/bot/commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
@@ -28,7 +31,26 @@ for (const file of commandFiles) {
   // With the key as the command name and the value as the exported module
   client.commands.set(command.data.name, command);
 }
+
+-- end of old stuff */
 const logger = require('../src/logger').logger;
+/* -- new stuff -- */
+const glob = require('glob');
+
+glob("./commands/*.js", {}, function (err, theList) {
+  if (err) {
+    throw err;
+  }
+  theList.forEach(function (thePath) {
+    const command = require(thePath.toString());
+    client.commands.set(command.data.name, command);
+    logger.debug("Loaded command: " + command.data.name);
+  });
+  logger.info("Finished loading " + theList.length + " commands.");
+});
+/* -- end of new stuff -- */
+
+
 
 client.on('ready', () => logger.info('The bot is online'));
 client.on('debug', m => logger.debug(m));
