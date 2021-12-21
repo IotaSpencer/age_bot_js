@@ -1,6 +1,6 @@
 const {Command, flags} = require('@oclif/command')
 const os = require('os')
-const pro = require(`/home/${os.userInfo().username}/bot`)
+const pro = require(`/home/${os.userInfo().username}/age_bot_js`)
 class DeployCommand extends Command {
   async run() {
     pro

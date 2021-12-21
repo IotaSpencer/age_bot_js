@@ -6,7 +6,7 @@ const _ = require('lodash/get');
 const {Client, Collection, Intents} = require('discord.js');
 const cfgpath = path.join(os.homedir(),'.age_bot','config.json')
 const cfg = require(cfgpath)
-const token = cfg["bot"]["token"]
+const token = cfg["bot"]["bot_token"]
 
 process.params = require("commandos").parse(process.argv);
 
@@ -35,16 +35,17 @@ for (const file of commandFiles) {
 }
 
 -- end of old stuff */
-const logger = require('../src/logger').logger;
+const logger = require(`${__dirname}/logger`).logger;
 /* -- new stuff -- */
 const glob = require('glob');
 logger.debug("CWD="+__dirname+";");
-glob(__dirname + "/commands/*.js", {}, function (err, theList) {
+glob("bot/commands/*.js", {}, function (err, theList) {
+  logger.debug(`${theList}`)
   if (err) {
     throw err;
   }
   theList.forEach(function (thePath) {
-    const command = require(thePath.toString());
+    const command = require(path.join(__dirname, thePath.toString()));
     client.commands.set(command.data.name, command);
     logger.debug("Loaded command: " + command.data.name);
   });
