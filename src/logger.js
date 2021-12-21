@@ -11,4 +11,12 @@ const streams = [
   {level: 'fatal', stream: process.stderr}
 ];
 
+if(process.params['debug'])
+{
+  streams.push({
+    level:debug,
+    stream: process.stdout
+  })
+}
+
 exports.logger = pino({level: 'debug'}, pino.multistream(streams));

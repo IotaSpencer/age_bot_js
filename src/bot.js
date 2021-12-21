@@ -8,6 +8,8 @@ const cfgpath = path.join(os.homedir(),'.age_bot','config.json')
 const cfg = require(cfgpath)
 const token = cfg["bot"]["token"]
 
+process.params = require("commandos").parse(process.argv);
+
 // Create the client
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.GUILD_MESSAGES]});
 const eventFiles = fs.readdirSync('src/bot/events').filter(file => file.endsWith('.js'));
