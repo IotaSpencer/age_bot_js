@@ -8,13 +8,16 @@
   },
   "bugs": "https://github.com/IotaSpencer/age_bot_js/issues",
   "dependencies": {
+    "@discordjs/builders": "^0.9.0",
     "@oclif/command": "^1.8.6",
     "@oclif/config": "^1.18.1",
     "@oclif/plugin-help": "^3.2.9",
+    "discord-api-types": "^0.25.2",
     "discord.js": "^13.3.1",
     "lodash": "^4.17.21",
     "pino": "^7.5.1",
     "pino-pretty": "^7.2.0",
+    "pkg-dir": "^6.0.1",
     "yaml": "^2.0.0-9"
   },
   "devDependencies": {

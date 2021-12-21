@@ -2,7 +2,6 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const _ = require('lodash/get');
-
 // Require required discord.js classes
 const {Client, Collection, Intents} = require('discord.js');
 const cfgpath = path.join(os.homedir(),'.age_bot','config.json')

@@ -1,20 +1,40 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const cfgpath = path.join(os.homedir(),'.age_bot','config.json')
-const cfg = require(cfgpath)
 const path = require("path");
 const os = require("os");
-const commands = [
-  new SlashCommandBuilder().setName('ping').setDescription('Replies with pong!'),
-  new SlashCommandBuilder().setName('server').setDescription('Replies with server info!'),
-  new SlashCommandBuilder().setName('user').setDescription('Replies with user info!'),
-]
-.map(command => command.toJSON());
+const fs = require('fs');
+const { packageDirectory } = require('pkg-dir')
+const cfgpath = path.join(os.homedir(),'.age_bot','config.json')
+const serverdbpath = path.join(os.homedir(), '.age_bot', 'serverdb.json')
+const cfg = require(cfgpath)
+const serverdb = require(serverdbpath)
+const commands = [];
+const commandFiles = fs.readdirSync('./bot/commands').filter(file => file.endsWith('.js'));
 
-const rest = new REST({ version: '9' }).setToken(cfg[0].bot.bot_token);
+// Place your client and guild ids here
+// do looping on commands for servers here
+const clientId = '123456789012345678';
+const guildId = '876543210987654321';
 
-// todo: add code for server id looping, and update the configs on windows and gems
-rest.put(Routes.applicationGuildCommands(cfg[0].bot.bot_id, guildId), { body: commands })
-.then(() => console.log('Successfully registered application commands.'))
-.catch(console.error);
+for (const file of commandFiles) {
+  const command = require(`./commands/${file}`);
+  commands.push(command.data.toJSON());
+}
+
+const rest = new REST({ version: '9' }).setToken(token);
+
+(async () => {
+  try {
+    console.log('Started refreshing application (/) commands.');
+
+    await rest.put(
+      Routes.applicationGuildCommands(clientId, guildId),
+      { body: commands },
+    );
+
+    console.log('Successfully reloaded application (/) commands.');
+  } catch (error) {
+    console.error(error);
+  }
+})();
