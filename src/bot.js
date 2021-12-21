@@ -37,7 +37,7 @@ const logger = require('../src/logger').logger;
 /* -- new stuff -- */
 const glob = require('glob');
 
-glob("./commands/*.js", {}, function (err, theList) {
+glob(__dirname + "/commands/*.js", {}, function (err, theList) {
   if (err) {
     throw err;
   }
