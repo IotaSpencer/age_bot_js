@@ -36,7 +36,7 @@ for (const file of commandFiles) {
 const logger = require('../src/logger').logger;
 /* -- new stuff -- */
 const glob = require('glob');
-
+logger.debug("CWD="__dirname+";");
 glob(__dirname + "/commands/*.js", {}, function (err, theList) {
   if (err) {
     throw err;
