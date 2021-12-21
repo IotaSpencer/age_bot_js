@@ -14,7 +14,7 @@ const streams = [
 if(process.params['debug'])
 {
   streams.push({
-    level:debug,
+    level: 'debug',
     stream: process.stdout
   })
 }
